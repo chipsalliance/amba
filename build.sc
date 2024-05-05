@@ -9,6 +9,7 @@ object v {
   val scala = "2.13.12"
   val chiselPlugin = ivy"org.chipsalliance:::chisel-plugin:7.0.0-M1"
   val chisel = ivy"org.chipsalliance::chisel:7.0.0-M1"
+  val mainargs = ivy"com.lihaoyi::mainargs:0.7.0"
 }
 
 object amba extends common.AMBAModule with ScalafmtModule {
@@ -17,6 +18,8 @@ object amba extends common.AMBAModule with ScalafmtModule {
   def scalaVersion = T(v.scala)
   def chiselIvy = Some(v.chisel)
   def chiselPluginIvy = Some(v.chiselPlugin)
+  def mainargsIvy = v.mainargs
+
   def pomSettings = T(PomSettings(
     description = artifactName(),
     organization = "org.chipsalliance",

@@ -24,4 +24,7 @@ trait HasChisel
   override def scalacPluginIvyDeps: T[Agg[Dep]] = T(super.scalacPluginIvyDeps() ++ chiselPluginIvy.map(Agg(_)).getOrElse(Agg.empty[Dep]))
 }
 
-trait AMBAModule extends HasChisel
+trait AMBAModule extends HasChisel {
+  def mainargsIvy: Dep
+  override def ivyDeps = T(super.ivyDeps() ++ Some(mainargsIvy))
+}
