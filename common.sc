@@ -30,6 +30,15 @@ trait HasChisel extends ScalaModule {
   )
 }
 
+trait AMBAModule extends HasChisel {
+  def mainargsIvy: Dep
+  def dwbbModule: ScalaModule
+  def axi4Module: ScalaModule
+  override def moduleDeps: Seq[JavaModule] =
+    super.moduleDeps ++ Seq(axi4Module, dwbbModule)
+  override def ivyDeps = T(super.ivyDeps() ++ Some(mainargsIvy))
+}
+
 trait ElaboratorModule extends ScalaModule with HasChisel {
   def generators:            Seq[ScalaModule]
   def panamaconverterModule: ScalaModule
