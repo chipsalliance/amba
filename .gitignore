@@ -1,3 +1,7 @@
-/out/
-/.idea/
-/.bsp/
+.bloop
+.metals/
+.vscode/
+out/
+result*
+/dependencies/
+target/
